@@ -1,0 +1,37 @@
+﻿@model HelperMethodDemo.Models.Operation
+@{
+    ViewBag.Title = "MultiNumberModel";
+}
+
+<h2>MultiNumberModel</h2>
+@using (Html.BeginForm("PerformModel", "Number", FormMethod.Post))
+            {
+                <div>
+                    @Html.Label("lblNo1", "No1", htmlAttributes: new { @for = "No1"})
+                    @Html.TextBoxFor(m=>m.No1, htmlAttributes: new {type="number", @class="form-control"})
+                </div>
+                <div>
+                    @Html.Label("lblNo2", "No2", htmlAttributes: new { @for = "No2"})
+                    @Html.EditorFor(m=>m.No2)
+                </div>
+                <div>
+                    @Html.Label("Operation")
+                    @Html.RadioButtonFor(m => m.Opr, "1")Add
+                    @Html.RadioButtonFor(m => m.Opr, "2")Sub
+                    @Html.RadioButtonFor(m => m.Opr, "3")Mul
+                    @Html.RadioButtonFor(m => m.Opr, "4")Div
+                </div>
+                <div>
+                    @Html.Label("lblIsFloating", "Is Floating", htmlAttributes: new { @for = "IsFloating"})
+                    @Html.EditorFor(m=>m.IsFloating)
+                </div>
+                <div>
+                    <input type="submit" value="Submit" />
+                    <span>@ViewBag.Ans</span>
+                </div>
+                <div>
+                    @Html.DisplayFor(m=>m.No1)
+                    @Html.DisplayFor(m=>m.Opr)
+                    @Html.DisplayFor(m=>m.No2)
+                </div>
+            }
